@@ -12,7 +12,7 @@ $(function() {
     color: ["#ffff80","#ff0080","#FFFFFF"]
   });
   $(".few").sparkleh({
-    count: 10,
+    count: 30,
     color: ["#ffff80","#ff0080","#FFFFFF"]
   });
    $("a").sparkleh({
