@@ -1,0 +1,149 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Pixie - A small, fast, native lisp with 'magical' powers.If you like Clojure, but are unhappy with the start-up time, or if you want something outside of the JVM ecosystem, then Pixie may be for you." />
+    <meta name="keywords" content='pixie,pixie-lang,clojure,lisp,magical,jit,baldridge,timothy,achiel it'>
+    <meta name="author" content="Pixielang.org">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <title>Pixie | Welcome</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <header class="header">
+     <ul class="header-subnav">
+        <li><a class="sparkley few" href="http://docs.pixielang.org">Docs</a></li>
+        <li class="banner sparkley many"><a href="#"><img class="bannerimage" src="img/logo.png"/></a></li>
+        <li><a class="sparkley few" href="#faqs">FAQs</a></li>
+      </ul>
+       <ul class="header-subnav">
+        <li><a class="sparkley few" href="https://github.com/pixie-lang/pixie" style="padding:0;">Git</a></li>
+       </ul>
+    </header>
+
+
+    <div class="content">
+        <div class="medium-offset-1 medium-10 columns pixie">
+            <div class="row pixie-text" style="margin-top:2rem;">
+              <h1 class="text-center"><span  class="sparkely few">Pixie</span></h1>
+              <h5 class="text-center">A small, fast, native lisp with <a class="magic">"magical"</a> powers</h5>
+            </div>
+            <div class="row pixie-text">
+              <p>
+                Pixie is a lightweight lisp suitable for both general use as well as shell scripting. The language is still in a "pre-alpha" phase and as such changes fairly quickly. The standard library is heavily inspired by Clojure as well as several other functional programming languages. It is written in <a href="http://pypy.readthedocs.org/en/latest/coding-guide.html" target="_blank">RPython</a> and as such supports a fairly fast GC and an amazingly fast tracing JIT.
+              </p>
+              <p>
+                If you like Clojure, but are unhappy with the start-up time, or if you want something outside of the JVM ecosystem, then Pixie may be for you.
+              </p>
+            </div>
+            <div class="row pixie-text">
+              <h2 class="text-center"><span  class="sparkely few">Hello Pixie</span></h2>
+              <h5 class="text-center">It's quite straight forward to go to Neverland</h5>
+            </div>
+            <div class="row pixie-text">
+                <div class="medium-offset-1 medium-5 columns">
+                  <h3 class="text-center">Source</h3>
+                  <pre>
+(println "Goodbye world!")
+
+(loop [x 5]
+  (when (> x 0)
+    (print (str x "\n"))
+    (recur (- x 1))))
+;And we're off
+
+(println "Hello Neverland!")
+                  </pre>
+                </div>
+                <div class="medium-5 columns">
+                  <h3 class="text-center">Console Output</h3>
+                  <pre>
+$ ./pixie-vm hello.pxi
+Goodbye world!
+5
+4
+3
+2
+1
+Hello Neverland!
+$
+                  </pre>
+                </div>
+            </div>
+
+            <div id="faqs" class="row pixie-text">
+              <h2 class="text-center"><span  class="sparkely few">FAQs</span></h2>
+              <h5 class="text-center">A bit more about the magic</h5>
+            </div>
+            <div class="row pixie-text">
+              <p><b>So this is written in Python?</b><br>
+              It's actually written in RPython, the same language PyPy is written in. make build_with_jit will compile Pixie using the PyPy toolchain. After some time, it will produce an executable called pixie-vm. This executable is a full blown native interpreter with a JIT, GC, etc. So yes, the guts are written in RPython, just like the guts of most lisp interpreters are written in C. At runtime the only thing that is interpreted is the Pixie bytecode, that is until the JIT kicks in...
+              </p>
+              <p><b>What's this bit about <a class="magic">"magical powers"</a></b><br>
+              First of all, the word "magic" is in quotes as it's partly a play on words, pixies are small, light and often considered to have magical powers.
+              </p>
+              <p>However there are a few features of pixie that although may not be uncommon, are perhaps unexpected from a lisp.
+              <ul style="maring:2rem;">
+                  <li>Pixie implements its own virtual machine. It does not run on the JVM, CLR or Python VM. It implements its own bytecode, has its own GC and JIT. And it's small. Currently the interpreter, JIT, GC, and stdlib clock in at about 10.3MB once compiled down to an executable.
+                  </li>
+                  <li>
+                    The JIT makes some things fast. Very fast. Code like the following compiles down to a loop with 6 CPU instructions. While this may not be too impressive for any language that uses a tracing jit, it is fairly unique for a language as young as Pixie.
+                  </li>
+                  <pre>
+;;  This code adds up to 10000 from 0 via calling a function that takes a 
+;;  variable number of arguments.
+;;  That function then reduces over the argument list to 
+;;  add up all given arguments.
+
+(defn add-fn [& args]
+  (reduce -add 0 args))
+
+(loop [x 0]
+  (if (eq x 10000)
+    x
+    (recur (add-fn x 1))))                    
+                  </pre>
+                  <li>
+                    Math system is fully polymorphic. Math primitives (+,-, etc.) are built off of polymorphic functions that dispatch on the types of the first two arguments. This allows the math system to be extended to complex numbers, matrices, etc. The performance penalty of such a polymorphic call is completely removed by the RPython generated JIT.
+                  </li>
+              </ul>
+              <p>(Planned <a class="magic">"magical"</a> Features)</p>
+              <ul style="maring:2rem;">
+                <li>Influencing the JIT from user code. (Still in research) Eventually it would be nice to allow Pixie to hint to the JIT that certain values are constants, that certain functions are pure, etc. This can all be done from inside RPython, and the plan is to expose parts of that to the user via hints in the Pixie language, to what extent this will be possible is not yet known.
+                </li>
+                <li>STM for parallelism. Once STM gets merged into the mainline branch of PyPy, we'll adopt it pretty quickly.</li>
+                <li>CSP for concurrency. We already have stacklets, it's not that hard to use them for CSP style concurrency as well.</li>
+              </ul>
+              </p>
+            </div>
+            <div class="row pixie-text">
+              <h3 class="text-center"><span  class="sparkely few">The origins of Pixie</span></h3>
+              <h5 class="text-center">"I've always had it in the back of my head that a lisp on RPython would be a good project."</h5>
+            </div>
+            <div class="row pixie-text">
+              <p>
+              <img class="baldridge" src="img/baldridge.jpg">
+                "I've been a language hacker for years, and have played around with RPython (PyPy’s tool-chain) for some time. I've always had it in the back of my head that a lisp on RPython would be a good project. But it seems like this time it’s really taken off.
+  I started the project about 3 months ago, and by now it’s grown quite a bit. The standard library is about to hit 2000 loc (lines of code), and we have about half a dozen contributors. Not bad for only a few months work." - Timothy Baldridge (2014)
+              </p>
+
+              Read the full interview with Timothy Baldridge <a href="https://medium.com/this-is-not-a-monad-tutorial/indie-languages-interview-pixie-and-timothy-baldridge-cadbc36418dc#.ytwnuxxn8">here</a>.
+            </div>
+             <div class="row pixie-text text-center">
+              <p>Sparkles by: Simon Goellner <a href="https://github.com/simeydotme" target="_blank">simeydotme</a></p>
+              <p>Hosting by: <a class="achielcontainer" target="_blank" href="https://achielit.com/"><img src="http://achielit.com/logosmall.png"></a></p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

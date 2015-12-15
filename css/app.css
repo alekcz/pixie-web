@@ -1,0 +1,118 @@
+@font-face 
+{
+	font-family: 'Montserrat';
+	src: url("fonts/Montserrat-Light.otf") format("opentype");
+}
+@font-face 
+{
+	font-family: 'Montserrat';
+	font-weight: bold;
+	src: url("fonts/Montserrat-Regular.otf") format("opentype");
+}
+.sparkley 
+{
+  background: transparent;
+  border: none;
+  padding: 16px 36px;
+  font-weight: normal;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  box-shadow: 0 38px 32px -23px transparent;
+  margin: 0 1em 1em;
+}
+.sparkley:hover 
+{
+  background: transparent;
+}
+html {
+    height: 100%;
+}
+body 
+{
+  font-family: 'Montserrat', Fallback, sans-serif;
+  color:#fff;
+  height: 100%;
+  margin: 0;
+  background: #092756;
+  background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(35, 24, 82, 0.22) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+  background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(35, 24, 82, 0.22) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+  background: -o-radial-gradient(0% 100%, ellipse cover, rgba(35, 24, 82, 0.22) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+  background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(35, 24, 82, 0.22) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+  background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(35, 24, 82, 0.22) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.header 
+{
+  text-align: center;
+  background-size: cover;
+  background-color: rgba(0,0,0,0.0);
+  padding: 0.5rem; 
+}
+.header .main-header 
+{
+	color: #555; 
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.header-subnav 
+{
+  float: none;
+  position: relative;
+  top: 0.5rem;
+  text-align: center;
+  margin-bottom: 0; 
+}
+.header-subnav li 
+{
+    float: none;
+    display: inline-block; 
+}
+.header-subnav li a 
+{
+  padding: 0.1rem;
+  font-size: 1.4rem;
+  color: #fff;
+  text-transform: uppercase;
+  display: block;
+  font-weight: bold;
+  letter-spacing: 1px; 
+}
+
+
+.content
+{
+	margin-top: 1rem;
+}
+.pixie-text
+{
+	padding:4rem;
+	padding-top:2rem;
+	padding-bottom: 0.75rem;
+}
+.pixie
+{
+	color: #000;
+	background-color: #fff;
+	padding-left: 0;
+	padding-right: 0;
+	min-height: 30rem;
+}
+.achielcontainer
+{
+	min-width: 8rem;
+	max-width: 8rem;
+}
+.baldridge
+{
+	height: 8rem;
+	float: left;
+    margin: 0 2rem 1rem 1rem;
+}
+pre
+{
+	background:rgba(240,240,240,1);
+	margin: 1rem;
+	padding: 2rem;
+}
