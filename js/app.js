@@ -5,14 +5,14 @@ $(function() {
 
   
   // default is varying levels of transparent white sparkles
-  $(".sparkley:first").sparkleh();
+  //$(".sparkley:first").sparkleh();
   
   $(".many").sparkleh({
     count: 200,
     color: ["#ffff80","#ff0080","#FFFFFF"]
   });
   $(".few").sparkleh({
-    count: 20,
+    count: 10,
     color: ["#ffff80","#ff0080","#FFFFFF"]
   });
    $("a").sparkleh({

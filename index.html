@@ -16,28 +16,31 @@
   <body>
     <header class="header">
      <ul class="header-subnav">
-        <li><a class="sparkley few" href="http://docs.pixielang.org">Docs</a></li>
-        <li class="banner sparkley many"><a href="#"><img class="bannerimage" src="img/logo.png"/></a></li>
-        <li><a class="sparkley few" href="#faqs">FAQs</a></li>
+        <li><a class="few" href="http://docs.pixielang.org">Docs</a></li>
+        <li class="banner many"><a href="#"><img class="bannerimage" src="img/logo.png"/></a></li>
+        <li><a class="few" href="#faqs">FAQs</a></li>
       </ul>
        <ul class="header-subnav">
-        <li><a class="sparkley few" href="https://github.com/pixie-lang/pixie" style="padding:0;">Git</a></li>
+        <li><a class="few" href="https://github.com/pixie-lang/pixie" style="padding:0;">Git</a></li>
        </ul>
     </header>
 
 
     <div class="content">
-        <div class="medium-offset-1 medium-10 columns pixie">
+        <div class="main medium-offset-1 medium-10 small-12 columns pixie">
             <div class="row pixie-text" style="margin-top:2rem;">
               <h1 class="text-center"><span  class="sparkely few">Pixie</span></h1>
               <h5 class="text-center">A small, fast, native lisp with <a class="magic">"magical"</a> powers</h5>
             </div>
             <div class="row pixie-text">
               <p>
-                Pixie is a lightweight lisp suitable for both general use as well as shell scripting. The language is still in a "pre-alpha" phase and as such changes fairly quickly. The standard library is heavily inspired by Clojure as well as several other functional programming languages. It is written in <a href="http://pypy.readthedocs.org/en/latest/coding-guide.html" target="_blank">RPython</a> and as such supports a fairly fast GC and an amazingly fast tracing JIT.
+                Pixie is a lightweight lisp suitable for both general use as well as shell scripting. The standard library is heavily inspired by Clojure as well as several other functional programming languages. It is written in <a href="http://pypy.readthedocs.org/en/latest/coding-guide.html" target="_blank">RPython</a> and as such supports a fairly fast GC and an amazingly fast tracing JIT.
               </p>
               <p>
-                If you like Clojure, but are unhappy with the start-up time, or if you want something outside of the JVM ecosystem, then Pixie may be for you.
+              Pixie implements its own virtual machine. It does not run on the JVM, CLR or Python VM. It implements its own bytecode, has its own GC and JIT. And it's small. Currently the interpreter, JIT, GC, and stdlib clock in at about 10.3MB once compiled down to an executable
+              </p>
+              <p>
+                If you like Clojure, but are unhappy with the start-up time, or if you want something outside of the JVM ecosystem, then Pixie may be for you. The language is still in a "pre-alpha" phase and as such changes fairly quickly. 
               </p>
             </div>
             <div class="row pixie-text">
@@ -45,8 +48,8 @@
               <h5 class="text-center">It's quite straight forward to go to Neverland</h5>
             </div>
             <div class="row pixie-text">
-                <div class="medium-offset-1 medium-5 columns">
-                  <h3 class="text-center">Source</h3>
+                <div class="medium-offset-1 medium-5 small-12 columns">
+                  <h5 class="text-center"><b>Source</b></h5>
                   <pre>
 (println "Goodbye world!")
 
@@ -59,8 +62,8 @@
 (println "Hello Neverland!")
                   </pre>
                 </div>
-                <div class="medium-5 columns">
-                  <h3 class="text-center">Console Output</h3>
+                <div class="medium-5 small-12 columns">
+                  <h5 class="text-center"><b>Console Output</b></h5>
                   <pre>
 $ ./pixie-vm hello.pxi
 Goodbye world!
@@ -119,6 +122,9 @@ $
                 <li>CSP for concurrency. We already have stacklets, it's not that hard to use them for CSP style concurrency as well.</li>
               </ul>
               </p>
+              <p><b>Where can I find other Pixie developers?</a></b><br>
+                Mostly on FreeNode at #pixie-lang or <a href="https://gitter.im/pixie-lang/pixie">gitter</a>. Stop by and say "hello".
+              </p>
             </div>
             <div class="row pixie-text">
               <h3 class="text-center"><span  class="sparkely few">The origins of Pixie</span></h3>
@@ -133,14 +139,19 @@ $
 
               Read the full interview with Timothy Baldridge <a href="https://medium.com/this-is-not-a-monad-tutorial/indie-languages-interview-pixie-and-timothy-baldridge-cadbc36418dc#.ytwnuxxn8">here</a>.
             </div>
-             <div class="row pixie-text text-center">
-              <p>Sparkles by: Simon Goellner <a href="https://github.com/simeydotme" target="_blank">simeydotme</a></p>
-              <p>Hosting by: <a class="achielcontainer" target="_blank" href="https://achielit.com/"><img src="http://achielit.com/logosmall.png"></a></p>
-            </div>
         </div>
-
+        
     </div>
-
+    <div class="fully">
+        <div class="row pixie-text text-center">
+         <h5 class="text-center">This page is under construction</h5>
+         </div>
+         <div class="row pixie-text text-center">
+          <p>Sparkles by <a href="https://github.com/simeydotme" target="_blank">simeydotme</a></p>
+          <p>Made with <a href="http://foundation.zurb.com" target="_blank">Foundation 6</a></p>
+          <p>Hosting by:    <a class="achielcontainer" target="_blank" href="https://achielit.com/"><img src="http://achielit.com/logosmall.png"></a></p>
+        </div>
+    </div>
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/what-input.min.js"></script>
     <script src="js/foundation.min.js"></script>
